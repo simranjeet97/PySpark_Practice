@@ -1,9 +1,9 @@
 from pyspark.sql import SparkSession
 spark=SparkSession.builder.master("local").appName("SparkandOracledbTest").getOrCreate()
-df=spark.read.format("jdbc").option("url","jdbc:oracle:thin:@localhost:1521/XE")\
+df=spark.read.format("jdbc").option("url","jdbc:oracle:thin:@{HOSTNAME}:{PORT_NUMBER}/{DATABASE_NAME}")\
 .option("dbtable","test")\
-.option("user","simran")\
-.option("password","sim")\
+.option("user","{USERNAME}")\
+.option("password","{PASSWORD}")\
 .option("driver","oracle.jdbc.driver.OracleDriver")\
 .load()
 
